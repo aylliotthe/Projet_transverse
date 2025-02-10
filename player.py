@@ -26,13 +26,12 @@ class Player1(sprite.Sprite):
         return Vecteur(0, 0)
 
     def move(self, *plateformes):
-        sol = None
         for plateforme in plateformes:
             personnage_tombe = self.vecteur_vitesse.y > 0 
-
             if plateforme.check_collision(self):  
                 if personnage_tombe and self.vecteur_position.x + self.rect.width > plateforme.rect.x and self.vecteur_position.x < plateforme.rect.x + plateforme.rect.width:
-                    sol = plateforme
+                    self.vecteur_position.y = plateforme.rect.y - self.rect.height - 1
+                    self.vecteur_vitesse.y = 0
                     self.au_sol = True
                     break  
             else:
@@ -64,6 +63,9 @@ class Player1(sprite.Sprite):
 
         self.vecteur_acceleration = vecteur_poids + vecteur_mouvement + vecteur_saut + vecteur_resistance
         self.vecteur_vitesse = self.vecteur_vitesse + self.vecteur_acceleration * DT
+        
+        if self.au_sol:
+            self.vecteur_vitesse.x = self.vecteur_vitesse.x * FROTTEMENT
 
         if not self.au_sol and  self.vecteur_vitesse.x > self.speed_max:
             self.vecteur_vitesse.x = self.speed_max
@@ -74,10 +76,6 @@ class Player1(sprite.Sprite):
                                  self.vecteur_vitesse * DT +
                                  0.5 * self.vecteur_acceleration * DT ** 2)
 
-        if self.au_sol:
-            self.vecteur_position.y = sol.rect.y - self.rect.height +1
-            self.vecteur_vitesse.y = 0
-            self.vecteur_vitesse.x = self.vecteur_vitesse.x * FROTTEMENT
 
     def update(self, *plateformes):
         self.move(*plateformes)
