@@ -30,7 +30,7 @@ class Player1(sprite.Sprite):
             personnage_tombe = self.vecteur_vitesse.y > 0 
             if plateforme.check_collision(self):  
                 if personnage_tombe and self.vecteur_position.x + self.rect.width > plateforme.rect.x and self.vecteur_position.x < plateforme.rect.x + plateforme.rect.width:
-                    self.vecteur_position.y = plateforme.rect.y - self.rect.height - 1
+                    self.vecteur_position.y = plateforme.rect.y - self.rect.height + 1
                     self.vecteur_vitesse.y = 0
                     self.au_sol = True
                     break  
