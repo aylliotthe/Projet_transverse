@@ -6,7 +6,7 @@ VECTEUR_GRAVITE = Vecteur(0, GRAVITE)
 class Player1(sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = image.load("C:\Users\eliot\Documents\P1 (24-25)\Semestre 2\Projet transverse\Assets\player2.jpg").convert_alpha()
+        self.image = image.load("Assets/player2.jpg").convert_alpha()
         self.image = transform.scale(self.image, (75, 75))
         self.rect = self.image.get_rect()
         self.accel_air = ACCELERATION_AIR
