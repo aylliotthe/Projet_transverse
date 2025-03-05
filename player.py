@@ -5,9 +5,10 @@ from vecteur import Vecteur
 VECTEUR_GRAVITE = Vecteur(0, GRAVITE)
 
 class Player(sprite.Sprite):
-    def __init__(self):
+    def __init__(self, image_path : str,
+                 num_joueur: int):
         super().__init__()
-        self.image = image.load("Assets/player.png").convert_alpha()
+        self.image = image.load(image_path).convert_alpha()
         self.image = transform.scale(self.image, (75, 75))
         self.mask = mask.from_surface(self.image)
         self.rect = self.image.get_rect()
@@ -24,27 +25,28 @@ class Player(sprite.Sprite):
         self.au_sol = False
         self.en_saut = False
 
+        if num_joueur == 1:
+            self.touches = [K_LEFT,K_RIGHT,K_UP]
+        elif num_joueur == 2:
+            self.touches = [K_q,K_d,K_z]
+
     def collision(self, grp_plateforme):
         """Détecte et résout les collisions avec les plateformes."""
-        self.au_sol = False  # Réinitialiser l'état "au sol" à chaque frame
+        self.au_sol = False
 
-        # Créer un rect temporaire pour la détection des collisions
         temp_rect = self.rect.copy()
         temp_rect.x = int(self.vecteur_position.x)
         temp_rect.y = int(self.vecteur_position.y)
 
         for plateforme in grp_plateforme:
             if temp_rect.colliderect(plateforme.rect):
-                # Calculer le chevauchement vertical
                 dx = (temp_rect.x + temp_rect.width / 2) - (plateforme.rect.x + plateforme.rect.width / 2)
                 dy = (temp_rect.y + temp_rect.height / 2) - (plateforme.rect.y + plateforme.rect.height / 2)
 
-                # Calculer les distances de chevauchement
                 overlap_x = (temp_rect.width + plateforme.rect.width) / 2 - abs(dx)
                 overlap_y = (temp_rect.height + plateforme.rect.height) / 2 - abs(dy)
             
-                # Résoudre la collision en fonction de la direction
-                if overlap_x > overlap_y:  # Collision verticale
+                if overlap_x > overlap_y: # Collision verticale
                     if dy > 0:  # Collision par le bas (le joueur tombe sur la plateforme)
                         self.vecteur_position.y += overlap_y
                         self.vecteur_vitesse.y = 0
@@ -70,11 +72,11 @@ class Player(sprite.Sprite):
 
     def saut(self):
         """Gère le saut du joueur."""
-        if self.au_sol and not self.en_saut:  # Vérifier si le joueur est au sol et n'est pas déjà en train de sauter
-            self.en_saut = True  # Marquer que le joueur est en train de sauter
-            self.au_sol = False  # Le joueur n'est plus au sol
-            return Vecteur(0, -FORCE_SAUT)  # Appliquer une force de saut vers le haut
-        return Vecteur(0, 0)  # Aucun saut si le joueur n'est pas au sol
+        if self.au_sol and not self.en_saut: 
+            self.en_saut = True 
+            self.au_sol = False
+            return Vecteur(0, -FORCE_SAUT) 
+        return Vecteur(0, 0) 
 
     def appliquer_frottement(self):
         if self.au_sol:
@@ -91,19 +93,19 @@ class Player(sprite.Sprite):
         vecteur_mouvement = Vecteur(0, 0)
 
         if not self.au_sol:
-            if keys[K_LEFT]:
+            if keys[self.touches[0]]:
                 vecteur_mouvement = Vecteur(-self.accel_air, 0)
-            elif keys[K_RIGHT]:
+            elif keys[self.touches[1]]:
                 vecteur_mouvement = Vecteur(self.accel_air, 0)
         else:
-            if keys[K_LEFT]:
+            if keys[self.touches[0]]:
                 vecteur_mouvement = Vecteur(-self.accel_sol, 0)
-            elif keys[K_RIGHT]:
+            elif keys[self.touches[1]]:
                 vecteur_mouvement = Vecteur(self.accel_sol, 0)
         
         
         vecteur_saut = Vecteur(0, 0)
-        if keys[K_UP]:
+        if keys[self.touches[2]]:
             vecteur_saut = self.saut()
 
         vecteur_poids = self.masse * VECTEUR_GRAVITE
@@ -127,5 +129,8 @@ class Player(sprite.Sprite):
     def update(self, grp_plateforme):
         self.move()
         self.collision(grp_plateforme)
+
+        self.vecteur_position.x = max(0, min(self.vecteur_position.x, TAILLEX - self.rect.width))
+
         self.rect.x = int(self.vecteur_position.x)
         self.rect.y = int(self.vecteur_position.y)
