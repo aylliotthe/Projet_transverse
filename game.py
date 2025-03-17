@@ -15,6 +15,8 @@ class Game:
 
         self.fullscreen = False
 
+        self.all_projectiles = sprite.Group()
+
 
 
     def run(self):
@@ -26,7 +28,7 @@ class Game:
         self.all_plateforme.add(plateforme1, plateforme2,plateforme3,plateforme4)
         self.all_sprites.add(plateforme1, plateforme2,plateforme3,plateforme4)
 
-        joueur1 = Player("Assets/player.png",2)
+        joueur1 = Player("Assets/Kitty.png",2,self.all_projectiles,"Assets/KittyProjo.png")
         self.all_sprites.add(joueur1)
 
         while self.running:
@@ -45,9 +47,16 @@ class Game:
 
             self.screen.fill((0, 0, 0))
             self.all_sprites.draw(self.screen)
+            points = joueur1.mask.outline()
+            for point in points:
+                draw.circle(self.screen, (255, 0, 0), (joueur1.rect.x + point[0], joueur1.rect.y + point[1]), 1)
 
+            self.all_projectiles.update()  # Met à jour les projectiles
+            self.all_projectiles.draw(self.screen)  # Dessine les projectiles
+            
             display.flip()
             self.clock.tick(FRAMERATE)
+
 
         quit()
         exit()

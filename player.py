@@ -1,17 +1,22 @@
 from pygame import *
 from Utile import *
 from vecteur import Vecteur
+from projectile import Projectile
+from time import *
+
 
 VECTEUR_GRAVITE = Vecteur(0, GRAVITE)
 
 class Player(sprite.Sprite):
     def __init__(self, image_path : str,
-                 num_joueur: int):
+                 num_joueur: int,
+                 groupe_projectiles: sprite.Group,
+                 projo_path: str):
         super().__init__()
         self.image = image.load(image_path).convert_alpha()
         self.image = transform.scale(self.image, (100,100))
         self.mask = mask.from_surface(self.image)
-        self.rect = self.image.get_rect()
+        self.rect = self.mask.get_rect()
 
         self.accel_air = ACCELERATION_AIR
         self.accel_sol = ACCELERATION_SOL
@@ -21,14 +26,21 @@ class Player(sprite.Sprite):
         self.vecteur_position = Vecteur(TAILLEX / 2, 0)
         self.vecteur_vitesse = Vecteur(0, 0)
         self.vecteur_acceleration = Vecteur(0, 0)
-
+        self.image_projo = projo_path
         self.au_sol = False
         self.en_saut = False
 
+        self.direction_tir = 1 
+        self.last_shot_time = 0 
+        self.groupe_projectiles = groupe_projectiles
+
+
         if num_joueur == 1:
-            self.touches = [K_LEFT,K_RIGHT,K_UP]
+            self.touches = [K_LEFT,K_RIGHT,K_UP,K_m,K_p]
         elif num_joueur == 2:
-            self.touches = [K_q,K_d,K_z]
+            self.touches = [K_q,K_d,K_z,K_v,K_b]
+
+
 
     def collision(self, grp_plateforme):
         """Détecte et résout les collisions avec les plateformes."""
@@ -70,6 +82,17 @@ class Player(sprite.Sprite):
                         self.en_saut = True
 
 
+    def tirer(self):
+        """Création et ajout d'un projectile dans la direction du mouvement du joueur"""
+        current_time = time() 
+
+        if current_time - self.last_shot_time >= TIME_ENTRE_TIR:
+            self.last_shot_time = current_time 
+            
+            vitesse_x = VITESSE_TIR * self.direction_tir 
+            projectile = Projectile(self.image_projo, Vecteur(self.rect.centerx, self.rect.centery), Vecteur(vitesse_x, 0))
+            self.groupe_projectiles.add(projectile)
+
     def saut(self):
         """Gère le saut du joueur."""
         if self.au_sol and not self.en_saut: 
@@ -95,13 +118,20 @@ class Player(sprite.Sprite):
         if not self.au_sol:
             if keys[self.touches[0]]:
                 vecteur_mouvement = Vecteur(-self.accel_air, 0)
+                self.direction_tir = -1  # Le joueur va vers la gauche
             elif keys[self.touches[1]]:
                 vecteur_mouvement = Vecteur(self.accel_air, 0)
+                self.direction_tir = 1  # Le joueur va vers la droite
         else:
             if keys[self.touches[0]]:
                 vecteur_mouvement = Vecteur(-self.accel_sol, 0)
+                self.direction_tir = -1  # Le joueur va vers la gauche
             elif keys[self.touches[1]]:
                 vecteur_mouvement = Vecteur(self.accel_sol, 0)
+                self.direction_tir = 1  # Le joueur va vers la droite
+
+        if keys[self.touches[3]]:  
+            self.tirer()
         
         
         vecteur_saut = Vecteur(0, 0)
