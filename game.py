@@ -28,8 +28,6 @@ class Game:
 
         joueur1 = Player("Assets/player.png",2)
         self.all_sprites.add(joueur1)
-        joueur2 = Player("Assets/player.png",1)
-        self.all_sprites.add(joueur2)
 
         while self.running:
             for e in event.get():
@@ -44,7 +42,6 @@ class Game:
                             self.screen = display.set_mode((TAILLEX, TAILLEY))
 
             joueur1.update(self.all_plateforme)
-            joueur2.update(self.all_plateforme)
 
             self.screen.fill((0, 0, 0))
             self.all_sprites.draw(self.screen)
