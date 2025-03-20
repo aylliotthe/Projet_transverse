@@ -13,10 +13,10 @@ class Player(sprite.Sprite):
                  groupe_projectiles: sprite.Group,
                  projo_path: str):
         super().__init__()
-        self.image = image.load(image_path).convert_alpha()
+        self.image = image.load(image_path)
         self.image = transform.scale(self.image, (100,100))
+        self.rect = self.image.get_rect()
         self.mask = mask.from_surface(self.image)
-        self.rect = self.mask.get_rect()
 
         self.accel_air = ACCELERATION_AIR
         self.accel_sol = ACCELERATION_SOL

@@ -18,8 +18,10 @@ class Projectile(sprite.Sprite):
         self.rect.y += self.vitesse.y
 
         # Rotation du projectile
-        self.angle += 10  # Ajuste la vitesse de rotation
+        self.angle += VITESSE_ROTATION  # Ajuste la vitesse de rotation
         self.image = transform.rotate(self.original_image, self.angle)
+        self.image = transform.scale(self.image, (50, 50)) 
+
         self.rect = self.image.get_rect(center=self.rect.center)  # Maintient la position après rotation
 
         # Suppression si le projectile sort de l'écran

@@ -30,6 +30,8 @@ class Game:
 
         joueur1 = Player("Assets/Kitty.png",2,self.all_projectiles,"Assets/KittyProjo.png")
         self.all_sprites.add(joueur1)
+        joueur2 = Player("Assets/Messi.png",1,self.all_projectiles,"Assets/MessiProjo.png")
+        self.all_sprites.add(joueur2)
 
         while self.running:
             for e in event.get():
@@ -44,6 +46,7 @@ class Game:
                             self.screen = display.set_mode((TAILLEX, TAILLEY))
 
             joueur1.update(self.all_plateforme)
+            joueur2.update(self.all_plateforme)
 
             self.screen.fill((0, 0, 0))
             self.all_sprites.draw(self.screen)
@@ -51,8 +54,8 @@ class Game:
             for point in points:
                 draw.circle(self.screen, (255, 0, 0), (joueur1.rect.x + point[0], joueur1.rect.y + point[1]), 1)
 
-            self.all_projectiles.update()  # Met à jour les projectiles
-            self.all_projectiles.draw(self.screen)  # Dessine les projectiles
+            self.all_projectiles.update() 
+            self.all_projectiles.draw(self.screen)  
             
             display.flip()
             self.clock.tick(FRAMERATE)
