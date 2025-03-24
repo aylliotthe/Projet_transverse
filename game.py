@@ -16,6 +16,8 @@ class Game:
         self.projectiles_joueur1 = sprite.Group()
         self.projectiles_joueur2 = sprite.Group()
         self.all_players = sprite.Group()
+        self.grp_1 = sprite.Group()
+        self.grp_2 = sprite.Group()
 
 
 
@@ -29,10 +31,18 @@ class Game:
 
         joueur1 = Player("Assets/Kitty.png",2,self.projectiles_joueur1,"Assets/KittyProjo.png")
         self.all_players.add(joueur1)
+        self.grp_1.add(joueur1)
         joueur2 = Player("Assets/Messi.png",1,self.projectiles_joueur2,"Assets/MessiProjo.png")
         self.all_players.add(joueur2)
+        self.grp_2.add(joueur2)
 
         while self.running:
+
+            if joueur1.life <= 0:
+                joueur1.kill()
+            if joueur2.life <= 0:
+                joueur2.kill()
+
             for e in event.get():
                 if e.type == QUIT:
                     self.running = False
@@ -43,6 +53,18 @@ class Game:
                             self.screen = display.set_mode((0, 0), FULLSCREEN)
                         else:
                             self.screen = display.set_mode((TAILLEX, TAILLEY))
+
+            for projectile in self.projectiles_joueur1:
+                collisions = sprite.spritecollide(projectile,self.grp_2, False, sprite.collide_mask)
+                if collisions:
+                    projectile.kill()
+                    joueur2.degat_faible()
+
+            for projectile in self.projectiles_joueur2:
+                collisions = sprite.spritecollide(projectile,self.grp_1, False, sprite.collide_mask)
+                if collisions:
+                    projectile.kill()
+                    joueur1.degat_faible()
 
             joueur1.update(self.all_plateforme)
             joueur2.update(self.all_plateforme)

@@ -33,6 +33,7 @@ class Player(sprite.Sprite):
         self.direction_tir = 1 
         self.last_shot_time = 0 
         self.groupe_projectiles = groupe_projectiles
+        self.life = 8
 
 
         if num_joueur == 1:
@@ -92,6 +93,16 @@ class Player(sprite.Sprite):
             vitesse_x = VITESSE_TIR * self.direction_tir 
             projectile = Projectile(self.image_projo, Vecteur(self.rect.centerx, self.rect.centery), Vecteur(vitesse_x, 0))
             self.groupe_projectiles.add(projectile)
+
+    def degat_fort(self):
+        """Retire une vie si le joueur se prend un projectile fort"""
+        self.life -= 2
+
+
+    def degat_faible(self):
+        """Retire une demi-vie si le joueur se prend un projectile faible"""
+        self.life -= 1
+
 
     def saut(self):
         """Gère le saut du joueur."""
@@ -164,3 +175,4 @@ class Player(sprite.Sprite):
 
         self.rect.x = int(self.vecteur_position.x)
         self.rect.y = int(self.vecteur_position.y)
+
