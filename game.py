@@ -10,12 +10,12 @@ class Game:
         display.set_caption("Jeu")
         self.clock = time.Clock()
         self.running = True
-        self.all_sprites = sprite.Group()
-        self.all_plateforme = sprite.Group()
-
         self.fullscreen = False
 
-        self.all_projectiles = sprite.Group()
+        self.all_plateforme = sprite.Group()
+        self.projectiles_joueur1 = sprite.Group()
+        self.projectiles_joueur2 = sprite.Group()
+        self.all_players = sprite.Group()
 
 
 
@@ -26,12 +26,11 @@ class Game:
         plateforme4 = PlateformeRect(300,25, TAILLEX - ((TAILLEX / 6) -100), TAILLEY/2-25)
 
         self.all_plateforme.add(plateforme1, plateforme2,plateforme3,plateforme4)
-        self.all_sprites.add(plateforme1, plateforme2,plateforme3,plateforme4)
 
-        joueur1 = Player("Assets/Kitty.png",2,self.all_projectiles,"Assets/KittyProjo.png")
-        self.all_sprites.add(joueur1)
-        joueur2 = Player("Assets/Messi.png",1,self.all_projectiles,"Assets/MessiProjo.png")
-        self.all_sprites.add(joueur2)
+        joueur1 = Player("Assets/Kitty.png",2,self.projectiles_joueur1,"Assets/KittyProjo.png")
+        self.all_players.add(joueur1)
+        joueur2 = Player("Assets/Messi.png",1,self.projectiles_joueur2,"Assets/MessiProjo.png")
+        self.all_players.add(joueur2)
 
         while self.running:
             for e in event.get():
@@ -48,15 +47,16 @@ class Game:
             joueur1.update(self.all_plateforme)
             joueur2.update(self.all_plateforme)
 
-            self.screen.fill((0, 0, 0))
-            self.all_sprites.draw(self.screen)
-            points = joueur1.mask.outline()
-            for point in points:
-                draw.circle(self.screen, (255, 0, 0), (joueur1.rect.x + point[0], joueur1.rect.y + point[1]), 1)
+            self.projectiles_joueur1.update()
+            self.projectiles_joueur2.update()
 
-            self.all_projectiles.update() 
-            self.all_projectiles.draw(self.screen)  
-            
+            self.screen.fill((0,0,0))
+            self.all_plateforme.draw(self.screen)
+            self.projectiles_joueur1.draw(self.screen)
+            self.projectiles_joueur2.draw(self.screen)
+            self.all_players.draw(self.screen)
+
+
             display.flip()
             self.clock.tick(FRAMERATE)
 
