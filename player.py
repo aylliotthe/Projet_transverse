@@ -39,7 +39,9 @@ class Player(sprite.Sprite):
         if num_joueur == 1:
             self.touches = [K_LEFT,K_RIGHT,K_UP,K_m,K_p]
         elif num_joueur == 2:
-            self.touches = [K_q,K_d,K_z,K_v,K_b]
+            self.touches = [K_q,K_d,K_z,K_v,K_b]    
+
+        self.num = num_joueur
 
 
 

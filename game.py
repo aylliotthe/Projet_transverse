@@ -2,6 +2,7 @@ from pygame import *
 from Utile import *
 from player import Player
 from plateforme import PlateformeRect
+from assets import *
 
 class Game:
     def __init__(self):
@@ -19,7 +20,27 @@ class Game:
         self.grp_1 = sprite.Group()
         self.grp_2 = sprite.Group()
 
+    def afficher_vie(self, joueur):
+        if joueur.num == 2:
+            x = 50
+            y = 10
+            k = 1
+        else:
+            x = TAILLEX - 50
+            y = 10
+            k = -1
 
+        nb_vie = joueur.life
+
+        for i in range(nb_vie//2):
+            self.screen.blit(coeurImage, (x, y))
+            x += k * 50
+
+        nb_vie = nb_vie % 2
+
+        for i in range(nb_vie):
+            self.screen.blit(demicoeurImage, (x, y))
+            x += k * 50
 
     def run(self):
         plateforme1 = PlateformeRect()
@@ -77,8 +98,11 @@ class Game:
             self.projectiles_joueur1.draw(self.screen)
             self.projectiles_joueur2.draw(self.screen)
             self.all_players.draw(self.screen)
+            
+            self.afficher_vie(joueur1)
+            self.afficher_vie(joueur2)
 
-
+        
             display.flip()
             self.clock.tick(FRAMERATE)
 
