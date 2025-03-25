@@ -29,10 +29,10 @@ class Game:
 
         self.all_plateforme.add(plateforme1, plateforme2,plateforme3,plateforme4)
 
-        joueur1 = Player("Assets/Kitty.png",2,self.projectiles_joueur1,"Assets/KittyProjo.png")
+        joueur1 = Player("Assets/Personnage/CharaKitty/Kitty.png",2,self.projectiles_joueur1,"Assets/Personnage/CharaKitty/KittyProjo.png")
         self.all_players.add(joueur1)
         self.grp_1.add(joueur1)
-        joueur2 = Player("Assets/Messi.png",1,self.projectiles_joueur2,"Assets/MessiProjo.png")
+        joueur2 = Player("Assets/Personnage/CharaMessi/Messi.png",1,self.projectiles_joueur2,"Assets/Personnage/CharaMessi/MessiProjo.png")
         self.all_players.add(joueur2)
         self.grp_2.add(joueur2)
 
