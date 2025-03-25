@@ -14,8 +14,11 @@ def charger_image(nom_image, taille=None):
     
 
 tailleImageCoeur = 50
-
+tailleImagePersonnage = 60
 
 # Charger les images
 coeurImage = charger_image("Coeur.png", (tailleImageCoeur, tailleImageCoeur))
 demicoeurImage = charger_image("Demi_coeur.png", (tailleImageCoeur, tailleImageCoeur))
+
+kittyImage = charger_image("Personnage/CharaKitty/kitty.png", (tailleImagePersonnage, tailleImagePersonnage))
+messiImage = charger_image("Personnage/CharaMessi/messi.png", (tailleImagePersonnage, tailleImagePersonnage))

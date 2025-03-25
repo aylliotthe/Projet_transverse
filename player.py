@@ -8,13 +8,12 @@ from time import *
 VECTEUR_GRAVITE = Vecteur(0, GRAVITE)
 
 class Player(sprite.Sprite):
-    def __init__(self, image_path : str,
+    def __init__(self, image,
                  num_joueur: int,
                  groupe_projectiles: sprite.Group,
                  projo_path: str):
         super().__init__()
-        self.image = image.load(image_path)
-        self.image = transform.scale(self.image, (100,100))
+        self.image = image
         self.rect = self.image.get_rect()
         self.mask = mask.from_surface(self.image)
 
@@ -54,7 +53,9 @@ class Player(sprite.Sprite):
         temp_rect.y = int(self.vecteur_position.y)
 
         for plateforme in grp_plateforme:
-            if temp_rect.colliderect(plateforme.rect):
+            offset_x = int(plateforme.rect.x - temp_rect.x)
+            offset_y = int(plateforme.rect.y - temp_rect.y)
+            if self.mask.overlap(plateforme.mask, (offset_x, offset_y)):  
                 dx = (temp_rect.x + temp_rect.width / 2) - (plateforme.rect.x + plateforme.rect.width / 2)
                 dy = (temp_rect.y + temp_rect.height / 2) - (plateforme.rect.y + plateforme.rect.height / 2)
 
@@ -63,23 +64,23 @@ class Player(sprite.Sprite):
             
                 if overlap_x > overlap_y: # Collision verticale
                     if dy > 0:  # Collision par le bas (le joueur tombe sur la plateforme)
-                        self.vecteur_position.y += overlap_y
+                        self.vecteur_position.y = plateforme.rect.bottom - 2
                         self.vecteur_vitesse.y = 0
                         self.au_sol = True
                         self.en_saut = True
                     else:  # Collision par le haut (le joueur saute contre la plateforme)
-                        self.vecteur_position.y -= overlap_y
+                        self.vecteur_position.y = plateforme.rect.top - temp_rect.height
                         self.vecteur_vitesse.y = 0
                         self.au_sol = True 
                         self.en_saut = False
                 else:  # Collision horizontale
                     if dx > 0:  # Collision côté droit
-                        self.vecteur_position.x += overlap_x
+                        self.vecteur_position.x += overlap_x - 5
                         self.vecteur_vitesse.x = 0
                         self.au_sol = True  
                         self.en_saut = True
                     else:  # Collision côté gauche
-                        self.vecteur_position.x -= overlap_x
+                        self.vecteur_position.x -= overlap_x - 5
                         self.vecteur_vitesse.x = 0
                         self.au_sol = True 
                         self.en_saut = True
