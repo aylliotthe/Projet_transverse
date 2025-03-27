@@ -87,9 +87,7 @@ class Game:
                     projectile.kill()
                     joueur1.degat_faible()
 
-            joueur1.update(self.all_plateforme)
-            joueur2.update(self.all_plateforme)
-
+            self.all_players.update( self.all_plateforme)
             self.projectiles_joueur1.update()
             self.projectiles_joueur2.update()
 
