@@ -20,5 +20,22 @@ tailleImagePersonnage = 60
 coeurImage = charger_image("Coeur.png", (tailleImageCoeur, tailleImageCoeur))
 demicoeurImage = charger_image("Demi_coeur.png", (tailleImageCoeur, tailleImageCoeur))
 
-kittyImage = charger_image("Personnage/CharaKitty/kitty.png", (tailleImagePersonnage, tailleImagePersonnage))
-messiImage = charger_image("Personnage/CharaMessi/messi.png", (tailleImagePersonnage, tailleImagePersonnage))
+
+
+HEROES = {
+    "CharaKitty": {
+        "name": "Hello Kitty",
+        "image": charger_image("Personnage/CharaKitty/kitty.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaKitty/ProjoKitty.png", (tailleImagePersonnage, tailleImagePersonnage))
+    },
+    "CharaMessi": {
+        "name": "Messi",
+        "image": charger_image("Personnage/CharaMessi/messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaMessi/MessiProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    },
+    "Poto": {
+        "name": "Poto",
+        "image": charger_image("player.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Projoplayer.png", (tailleImagePersonnage, tailleImagePersonnage))
+    }
+}

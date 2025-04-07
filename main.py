@@ -1,6 +1,8 @@
-from game import Game
+from homescreen import HomeScreen
 
 if __name__ == "__main__":
-    game = Game()
-    game.run()
+    screen = HomeScreen()
+
+    while screen:
+        screen = screen.run()
 

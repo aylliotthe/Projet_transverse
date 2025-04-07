@@ -5,7 +5,7 @@ from plateforme import PlateformeRect
 from assets import *
 
 class Game:
-    def __init__(self):
+    def __init__(self,Personnage, Map):
         init()
         font.init()
         self.font = font.SysFont(None, 60)
@@ -23,6 +23,20 @@ class Game:
         self.all_players = sprite.Group()
         self.grp_1 = sprite.Group()
         self.grp_2 = sprite.Group()
+
+        self.all_plateforme.add(
+            PlateformeRect(),
+            PlateformeRect(300, 50, TAILLEX / 2 - 75, TAILLEY / 3 - 50),
+            PlateformeRect(300, 25, (TAILLEX / 6) - 75, TAILLEY / 2 - 25),
+            PlateformeRect(300, 25, TAILLEX - ((TAILLEX / 6) - 100), TAILLEY / 2 - 25)
+        )
+
+        self.joueur1 = Player(HEROES[Personnage[0]]["image"], 1, self.projectiles_joueur1, HEROES[Personnage[0]]["projo"])
+        self.joueur2 = Player(HEROES[Personnage[1]]["image"], 2, self.projectiles_joueur2, HEROES[Personnage[1]]["projo"])
+
+        self.all_players.add(self.joueur1, self.joueur2)
+        self.grp_1.add(self.joueur1)
+        self.grp_2.add(self.joueur2)
 
     def afficher_vie(self, joueur):
         if joueur.num == 2:
@@ -59,22 +73,6 @@ class Game:
             self.clock.tick(15)
 
     def run(self):
-        # Plateformes
-        self.all_plateforme.add(
-            PlateformeRect(),
-            PlateformeRect(300, 50, TAILLEX / 2 - 75, TAILLEY / 3 - 50),
-            PlateformeRect(300, 25, (TAILLEX / 6) - 75, TAILLEY / 2 - 25),
-            PlateformeRect(300, 25, TAILLEX - ((TAILLEX / 6) - 100), TAILLEY / 2 - 25)
-        )
-
-        # Joueurs
-        joueur1 = Player(kittyImage, 2, self.projectiles_joueur1, "Assets/Personnage/CharaKitty/KittyProjo.png")
-        joueur2 = Player(messiImage, 1, self.projectiles_joueur2, "Assets/Personnage/CharaMessi/MessiProjo.png")
-
-        self.all_players.add(joueur1, joueur2)
-        self.grp_1.add(joueur1)
-        self.grp_2.add(joueur2)
-
         while self.running:
             for e in event.get():
                 if e.type == QUIT:
@@ -90,21 +88,21 @@ class Game:
                         self.afficher_pause()
 
             # Gestion des vies
-            if joueur1.life <= 0:
-                joueur1.kill()
-            if joueur2.life <= 0:
-                joueur2.kill()
+            if self.joueur1.life <= 0:
+                self.joueur1.kill()
+            if self.joueur2.life <= 0:
+                self.joueur2.kill()
 
             # Collisions projectiles
             for projectile in self.projectiles_joueur1:
                 if sprite.spritecollide(projectile, self.grp_2, False, sprite.collide_mask):
                     projectile.kill()
-                    joueur2.degat_faible()
+                    self.joueur2.degat_faible()
 
             for projectile in self.projectiles_joueur2:
                 if sprite.spritecollide(projectile, self.grp_1, False, sprite.collide_mask):
                     projectile.kill()
-                    joueur1.degat_faible()
+                    self.joueur1.degat_faible()
 
             # Updates
             self.all_players.update(self.all_plateforme)
@@ -118,8 +116,8 @@ class Game:
             self.projectiles_joueur2.draw(self.screen)
             self.all_players.draw(self.screen)
 
-            self.afficher_vie(joueur1)
-            self.afficher_vie(joueur2)
+            self.afficher_vie(self.joueur1)
+            self.afficher_vie(self.joueur2)
 
             display.flip()
             self.clock.tick(FRAMERATE)
