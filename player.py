@@ -11,7 +11,7 @@ class Player(sprite.Sprite):
     def __init__(self, image,
                  num_joueur: int,
                  groupe_projectiles: sprite.Group,
-                 projo_path: str):
+                 projo_image: str):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
@@ -25,7 +25,7 @@ class Player(sprite.Sprite):
         self.vecteur_position = Vecteur(TAILLEX / 2, 0)
         self.vecteur_vitesse = Vecteur(0, 0)
         self.vecteur_acceleration = Vecteur(0, 0)
-        self.image_projo = projo_path
+        self.image_projo = projo_image
         self.au_sol = False
         self.en_saut = False
 

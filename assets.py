@@ -25,17 +25,17 @@ demicoeurImage = charger_image("Demi_coeur.png", (tailleImageCoeur, tailleImageC
 HEROES = {
     "CharaKitty": {
         "name": "Hello Kitty",
-        "image": charger_image("Personnage/CharaKitty/kitty.png", (tailleImagePersonnage, tailleImagePersonnage)),
-        "projo": charger_image("Personnage/CharaKitty/ProjoKitty.png", (tailleImagePersonnage, tailleImagePersonnage))
+        "image": charger_image("Personnage/CharaKitty/Kitty.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaKitty/KittyProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     },
     "CharaMessi": {
         "name": "Messi",
-        "image": charger_image("Personnage/CharaMessi/messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "image": charger_image("Personnage/CharaMessi/Messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaMessi/MessiProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     },
     "Poto": {
         "name": "Poto",
-        "image": charger_image("player.png", (tailleImagePersonnage, tailleImagePersonnage)),
-        "projo": charger_image("Projoplayer.png", (tailleImagePersonnage, tailleImagePersonnage))
+        "image": charger_image("Player.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("PlayerProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     }
 }
