@@ -15,7 +15,7 @@ class Game:
 
         self.clock = time.Clock()
         self.running = True
-        self.fullscreen = False
+        self.fullscreen = True
 
         self.all_plateforme = sprite.Group()
         self.projectiles_joueur1 = sprite.Group()
@@ -81,7 +81,7 @@ class Game:
                     if e.key == K_f:
                         self.fullscreen = not self.fullscreen
                         if self.fullscreen:
-                            self.screen = display.set_mode((0, 0), FULLSCREEN)
+                            self.screen = display.set_mode((TAILLEX, TAILLEY), FULLSCREEN)
                         else:
                             self.screen = display.set_mode((TAILLEX, TAILLEY))
                     elif e.key == K_ESCAPE:
@@ -90,8 +90,10 @@ class Game:
             # Gestion des vies
             if self.joueur1.life <= 0:
                 self.joueur1.kill()
+                return True
             if self.joueur2.life <= 0:
                 self.joueur2.kill()
+                return True
 
             # Collisions projectiles
             for projectile in self.projectiles_joueur1:
@@ -122,5 +124,3 @@ class Game:
             display.flip()
             self.clock.tick(FRAMERATE)
 
-        quit()
-        exit()
