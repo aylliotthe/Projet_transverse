@@ -31,8 +31,8 @@ class Game:
             PlateformeRect(300, 25, TAILLEX - ((TAILLEX / 6) - 100), TAILLEY / 2 - 25)
         )
 
-        self.joueur1 = Player(HEROES[Personnage[0]]["image"], 1, self.projectiles_joueur1, HEROES[Personnage[0]]["projo"])
-        self.joueur2 = Player(HEROES[Personnage[1]]["image"], 2, self.projectiles_joueur2, HEROES[Personnage[1]]["projo"])
+        self.joueur1 = Player(HEROES[Personnage[0]]["image"], 2, self.projectiles_joueur1, HEROES[Personnage[0]]["projo"])
+        self.joueur2 = Player(HEROES[Personnage[1]]["image"], 1, self.projectiles_joueur2, HEROES[Personnage[1]]["projo"])
 
         self.all_players.add(self.joueur1, self.joueur2)
         self.grp_1.add(self.joueur1)
