@@ -19,7 +19,7 @@ class MapSelectionScreen:
             {"name": "Nether", "image": image.load("Assets/Map/Nether/NetherMap.png")},
         ]
         for map_ in self.maps:
-            map_["thumb"] = transform.scale(map_["image"], (200, 150))
+            map_["thumb"] = transform.scale(map_["image"], (180, 130))
 
         self.selected_map = None
 
@@ -29,8 +29,8 @@ class MapSelectionScreen:
 
     def draw_button(self, text, rect, mouse_pos, click):
         color = (200, 0, 0) if rect.collidepoint(mouse_pos) else (100, 0, 0)
-        draw.rect(self.screen, color, rect)
-        self.draw_text(text, (rect.x + 10, rect.y + 10))
+        draw.rect(self.screen, color, rect,border_radius=20)
+        self.draw_text(text, (rect.x + 40, rect.y + 7))
         return click and rect.collidepoint(mouse_pos)
 
     def run(self):
@@ -61,7 +61,7 @@ class MapSelectionScreen:
                 self.draw_text(f"Map selectionnée : {self.selected_map['name']}", (330, 300))
                 self.screen.blit(transform.scale(self.selected_map['image'], (300, 200)), (350, 350))
 
-                btn_rect = Rect(425, 560, 150, 40)
+                btn_rect = Rect(425, 530, 160, 60)
                 if self.draw_button("Jouer", btn_rect, mouse_pos, click):
                     return Game(self.selected_heroes, self.selected_map['name'])
 

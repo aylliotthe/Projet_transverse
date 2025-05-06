@@ -31,8 +31,8 @@ class HeroSelectionScreen:
 
     def draw_button(self, text, rect, mouse_pos, click):
         color = (200, 0, 0) if rect.collidepoint(mouse_pos) else (100, 0, 0)
-        draw.rect(self.screen, color, rect)
-        self.draw_text(text, (rect.x + 10, rect.y + 10))
+        draw.rect(self.screen, color, rect,border_radius=20)
+        self.draw_text(text, (rect.x + 30, rect.y + 3))
         return click and rect.collidepoint(mouse_pos)
 
     def run(self):
@@ -66,11 +66,11 @@ class HeroSelectionScreen:
                         self.selected_heroes[1] = hero
 
             if self.selected_heroes[0]:
-                self.draw_text(f"Joueur 1: {self.selected_heroes[0]['name']}", (20, 250))
-                self.screen.blit(transform.scale(self.selected_heroes[0]['image'], (150, 150)), (20, 300))
+                self.draw_text(f"Joueur 1: {self.selected_heroes[0]['name']}", (90, 250))
+                self.screen.blit(transform.scale(self.selected_heroes[0]['image'], (160, 150)), (120, 300))
             if self.selected_heroes[1]:
-                self.draw_text(f"Joueur 2: {self.selected_heroes[1]['name']}", (780, 250))
-                self.screen.blit(transform.scale(self.selected_heroes[1]['image'], (150, 150)), (780, 300))
+                self.draw_text(f"Joueur 2: {self.selected_heroes[1]['name']}", (670, 250))
+                self.screen.blit(transform.scale(self.selected_heroes[1]['image'], (150, 150)), (710, 300))
 
             if self.selected_heroes[0] and self.selected_heroes[1]:
                 btn_rect = Rect(425, 500, 150, 50)
