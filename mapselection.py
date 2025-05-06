@@ -35,6 +35,7 @@ class MapSelectionScreen:
 
     def run(self):
         while self.running:
+            self.screen.blit(self.background, (0, 0))
             mouse_pos = mouse.get_pos()
             click = False
 
