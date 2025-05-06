@@ -1,7 +1,7 @@
 from pygame import *
 from Utile import *
 from player import Player
-from plateforme import PlateformeRect
+from plateforme import *
 from assets import *
 
 class Game:
@@ -11,6 +11,7 @@ class Game:
         self.font = font.SysFont(None, 60)
 
         self.screen = display.set_mode((TAILLEX, TAILLEY), FULLSCREEN)
+
         display.set_caption("Jeu")
 
         self.clock = time.Clock()
@@ -24,12 +25,20 @@ class Game:
         self.grp_1 = sprite.Group()
         self.grp_2 = sprite.Group()
 
-        self.all_plateforme.add(
-            PlateformeRect(),
-            PlateformeRect(300, 50, TAILLEX / 2 - 75, TAILLEY / 3 - 50),
-            PlateformeRect(300, 25, (TAILLEX / 6) - 75, TAILLEY / 2 - 25),
-            PlateformeRect(300, 25, TAILLEX - ((TAILLEX / 6) - 100), TAILLEY / 2 - 25)
-        )
+        map_data = MAPS[Map]
+        self.background = transform.scale(map_data["fond"], (TAILLEX, TAILLEY))
+
+        if "plateformes" in map_data:
+            for plat in map_data["plateformes"]:
+                plateforme = PlateformeImage(plat["image"], plat["pos"])
+                self.all_plateforme.add(plateforme)
+        else:
+            self.all_plateforme.add(
+                PlateformeRect(),
+                PlateformeRect(300, 50, TAILLEX / 2 - 75, TAILLEY / 3 - 50),
+                PlateformeRect(300, 25, (TAILLEX / 6) - 75, TAILLEY / 2 - 25),
+                PlateformeRect(300, 25, TAILLEX - ((TAILLEX / 6) - 100), TAILLEY / 2 - 25)
+            )
 
         self.joueur1 = Player(HEROES[Personnage[0]]["image"], 2, self.projectiles_joueur1, HEROES[Personnage[0]]["projo"])
         self.joueur2 = Player(HEROES[Personnage[1]]["image"], 1, self.projectiles_joueur2, HEROES[Personnage[1]]["projo"])
@@ -112,7 +121,7 @@ class Game:
             self.projectiles_joueur2.update()
 
             # Affichage
-            self.screen.fill((0, 0, 0))
+            self.screen.blit(self.background, (0, 0))
             self.all_plateforme.draw(self.screen)
             self.projectiles_joueur1.draw(self.screen)
             self.projectiles_joueur2.draw(self.screen)
@@ -123,4 +132,5 @@ class Game:
 
             display.flip()
             self.clock.tick(FRAMERATE)
+        return True
 

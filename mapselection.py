@@ -1,6 +1,5 @@
-from pygame import*
+from pygame import *
 from game import Game
-
 
 class MapSelectionScreen:
     def __init__(self, selected_heroes):
@@ -43,22 +42,25 @@ class MapSelectionScreen:
                     click = True
 
             self.screen.fill((30, 30, 30))
-            self.draw_text("Selectionnez la map", (350, 20))
+            self.draw_text("Selectionnez la map", (330, 20))
 
             for i, map_ in enumerate(self.maps):
                 x = 100 + i * 280
                 y = 100
                 rect = Rect(x, y, 200, 150)
                 self.screen.blit(map_["thumb"], (x, y))
+                self.draw_text(map_["name"], (x + 50, y + 160))
+
                 if click and rect.collidepoint(mouse_pos):
                     self.selected_map = map_
 
             if self.selected_map:
-                self.draw_text(f"Map selectionnée : {self.selected_map['name']}", (350, 300))
+                self.draw_text(f"Map selectionnée : {self.selected_map['name']}", (330, 300))
                 self.screen.blit(transform.scale(self.selected_map['image'], (300, 200)), (350, 350))
 
-                if self.draw_button("Jouer", Rect(425, 560, 150, 40), mouse_pos, click):
-                    return Game(self.selected_heroes, self.selected_map)
+                btn_rect = Rect(425, 560, 150, 40)
+                if self.draw_button("Jouer", btn_rect, mouse_pos, click):
+                    return Game(self.selected_heroes, self.selected_map['name'])
 
             display.flip()
             self.clock.tick(60)
