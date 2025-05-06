@@ -19,8 +19,7 @@ tailleImagePersonnage = 60
 # Charger les images
 coeurImage = charger_image("Coeur.png", (tailleImageCoeur, tailleImageCoeur))
 demicoeurImage = charger_image("Demi_coeur.png", (tailleImageCoeur, tailleImageCoeur))
-
-
+titre = charger_image("title.png")
 
 HEROES = {
     "CharaKitty": {
