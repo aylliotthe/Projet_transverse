@@ -39,7 +39,6 @@ MAPS = {
     "Chatelet": {
         "name": "Chatelet",
         "fond": charger_image("Map/Chatelet/ChateletMAP.png"),
-        "nb_plateforme": 2,
         "plateformes": [
             {"image": charger_image("Map/Chatelet/ChateletMAPPlat1.png"), "pos": (590, 564)},
             {"image": charger_image("Map/Chatelet/ChateletMAPPlat2.png"), "pos": (-2, 367)},
@@ -47,6 +46,13 @@ MAPS = {
     },
     "Nether": {
         "name": "Nether",
-        "image": charger_image("Map/Nether/NetherMap.png", (1000, 600)),
+        "fond": charger_image("Map/Nether/NetherMap.png"),
+        "plateformes": [
+            {"image": charger_image("Map/Nether/NetherMAPPlat1.png"), "pos": (0, 0)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat2.png"), "pos": (0, 0)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat3.png"), "pos": (0, 0)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat4.png"), "pos": (0, 0)},
+        ],
+
     }
 }
