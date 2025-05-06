@@ -19,8 +19,8 @@ class HomeScreen:
 
     def draw_button(self, text, rect, mouse_pos, click):
         color = (200, 0, 0) if rect.collidepoint(mouse_pos) else (100, 0, 0)
-        draw.rect(self.screen, color, rect)
-        self.draw_text(text, (rect.x + 10, rect.y + 10))
+        draw.rect(self.screen, color, rect, border_radius=20)
+        self.draw_text(text, (rect.x + 50, rect.y + 10))
         return click and rect.collidepoint(mouse_pos)
 
     def run(self):
@@ -36,10 +36,10 @@ class HomeScreen:
 
             self.draw_text("Bienvenue dans Heroes Battle", (300, 150))
 
-            play_btn = Rect(400, 250, 200, 60)
-            quit_btn = Rect(400, 330, 200, 60)
+            play_btn = Rect(400, 350, 200, 60)
+            quit_btn = Rect(400, 430, 200, 60)
 
-            if self.draw_button("Jouer", play_btn, mouse_pos, click):
+            if self.draw_button(" Jouer", play_btn, mouse_pos, click):
                 return HeroSelectionScreen()
             if self.draw_button("Quitter", quit_btn, mouse_pos, click):
                 return False
