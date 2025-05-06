@@ -10,6 +10,9 @@ class HeroSelectionScreen:
         self.font = font.Font("Assets/Jersey10-Regular.ttf", 40)
         self.clock = time.Clock()
         self.running = True
+        self.background = image.load("Assets/background_home_screen.png")
+        self.background = self.background.convert()
+        self.screen.blit(self.background, (0, 0))
 
         self.heroes = []
         for hero in HEROES.keys():
@@ -43,7 +46,6 @@ class HeroSelectionScreen:
                 if e.type == MOUSEBUTTONDOWN and e.button == 1:
                     click = True
 
-            self.screen.fill((30, 30, 30))
             self.draw_text("Selectionnez votre heros", (370, 20))
 
             for i, hero in enumerate(self.heroes):

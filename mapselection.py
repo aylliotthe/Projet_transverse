@@ -10,6 +10,9 @@ class MapSelectionScreen:
         self.clock = time.Clock()
         self.running = True
         self.selected_heroes = selected_heroes
+        self.background = image.load("Assets/background_home_screen.png")
+        self.background = self.background.convert()
+        self.screen.blit(self.background, (0, 0))
 
         self.maps = [
             {"name": "Chatelet", "image": image.load("Assets/Map/Chatelet/ChateletMAP.png")},
@@ -41,7 +44,6 @@ class MapSelectionScreen:
                 if e.type == MOUSEBUTTONDOWN and e.button == 1:
                     click = True
 
-            self.screen.fill((30, 30, 30))
             self.draw_text("Selectionnez la map", (330, 20))
 
             for i, map_ in enumerate(self.maps):
