@@ -9,6 +9,9 @@ class HomeScreen:
         self.font = font.Font("Assets/Jersey10-Regular.ttf", 40)
         self.clock = time.Clock()
         self.running = True
+        self.background = image.load("Assets/background_home_screen.png")
+        self.background = self.background.convert()
+        self.screen.blit(self.background, (0,0))
 
     def draw_text(self, text, pos, color=(255, 255, 255)):
         surf = self.font.render(text, True, color)
@@ -31,7 +34,6 @@ class HomeScreen:
                 if e.type == MOUSEBUTTONDOWN and e.button == 1:
                     click = True
 
-            self.screen.fill((30, 30, 30))
             self.draw_text("Bienvenue dans Heroes Battle", (300, 150))
 
             play_btn = Rect(400, 250, 200, 60)
