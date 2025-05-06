@@ -62,7 +62,7 @@ class Game:
 
     def afficher_pause(self):
         paused = True
-        bouton_menu = Rect(TAILLEX // 2 - 150, TAILLEY // 2 - 50, 300, 100)
+        bouton_menu = Rect(TAILLEX // 2 - 150, TAILLEY // 2 - 50, 350, 100)
 
         while paused:
             for event_pause in event.get():
@@ -75,7 +75,7 @@ class Game:
                     self.running = False
                     return
 
-            draw.rect(self.screen, (200, 0, 0), bouton_menu)
+            draw.rect(self.screen, (200, 0, 0), bouton_menu,border_radius=20)
             texte = self.font.render("Menu principal", True, (255, 255, 255))
             self.screen.blit(texte, (bouton_menu.x + 30, bouton_menu.y + 30))
             display.flip()
