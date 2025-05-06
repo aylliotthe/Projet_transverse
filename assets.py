@@ -32,10 +32,21 @@ HEROES = {
         "name": "Messi",
         "image": charger_image("Personnage/CharaMessi/Messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaMessi/MessiProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    }
+}
+
+MAPS = {
+    "Chatelet": {
+        "name": "Chatelet",
+        "fond": charger_image("Map/Chatelet/ChateletMAP.png"),
+        "nb_plateforme": 2,
+        "plateformes": [
+            {"image": charger_image("Map/Chatelet/ChateletMAPPlat1.png"), "pos": (590, 564)},
+            {"image": charger_image("Map/Chatelet/ChateletMAPPlat2.png"), "pos": (-2, 367)},
+        ],
     },
-    "Poto": {
-        "name": "Poto",
-        "image": charger_image("Player.png", (tailleImagePersonnage, tailleImagePersonnage)),
-        "projo": charger_image("PlayerProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    "Nether": {
+        "name": "Nether",
+        "image": charger_image("Map/Nether/NetherMap.png", (1000, 600)),
     }
 }

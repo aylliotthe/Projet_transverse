@@ -13,3 +13,11 @@ class PlateformeRect(sprite.Sprite):
         self.mask = mask.from_surface(self.image)
 
 
+
+
+class PlateformeImage(sprite.Sprite):
+    def __init__(self, image, pos):
+        super().__init__()
+        self.image = image.convert_alpha()
+        self.rect = self.image.get_rect(topleft=pos)
+        self.mask = mask.from_surface(self.image)
