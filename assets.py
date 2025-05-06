@@ -52,10 +52,10 @@ MAPS = {
         "name": "Nether",
         "fond": charger_image("Map/Nether/NetherMap.png"),
         "plateformes": [
-            {"image": charger_image("Map/Nether/NetherMAPPlat1.png"), "pos": (0, 0)},
-            {"image": charger_image("Map/Nether/NetherMAPPlat2.png"), "pos": (0, 0)},
-            {"image": charger_image("Map/Nether/NetherMAPPlat3.png"), "pos": (0, 0)},
-            {"image": charger_image("Map/Nether/NetherMAPPlat4.png"), "pos": (0, 0)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat1.png"), "pos": (524, 575.5)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat2.png"), "pos": (436, 383.5)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat3.png"), "pos": (133, 218)},
+            {"image": charger_image("Map/Nether/NetherMAPPlat4.png"), "pos": (555, 110)},
         ],
 
     }
