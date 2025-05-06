@@ -19,18 +19,12 @@ tailleImagePersonnage = 60
 # Charger les images
 coeurImage = charger_image("Coeur.png", (tailleImageCoeur, tailleImageCoeur))
 demicoeurImage = charger_image("Demi_coeur.png", (tailleImageCoeur, tailleImageCoeur))
-titre = charger_image("title.png")
 
 HEROES = {
     "CharaKitty": {
         "name": "Hello Kitty",
         "image": charger_image("Personnage/CharaKitty/Kitty.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaKitty/KittyProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
-    },
-    "CharaMessi": {
-        "name": "Messi",
-        "image": charger_image("Personnage/CharaMessi/Messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
-        "projo": charger_image("Personnage/CharaMessi/MessiProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     },
     "CharaMessi": {
         "name": "Messi",
