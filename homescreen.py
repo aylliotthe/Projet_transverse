@@ -1,6 +1,15 @@
 from pygame import *
 from playerselection import HeroSelectionScreen
 
+import pygame
+
+# Initialiser Pygame et le module mixer
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load("Assets/Musiques/music_menu.mp3")
+pygame.mixer.music.play(loops=-1)
+
+
 class HomeScreen:
     def __init__(self):
         init()
@@ -47,4 +56,3 @@ class HomeScreen:
             display.flip()
             self.clock.tick(60)
 
-  
