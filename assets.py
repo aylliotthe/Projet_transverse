@@ -35,12 +35,19 @@ HEROES = {
         "name": "Altego",
         "image" : charger_image("Personnage/CharaAltego/Altego.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaAltego/AltegoProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    },
+    """
+    "CharaPizzaiolo": {
+        "name": "Pizzaiolo",
+        "image" : charger_image("Personnage/CharaPizzaiolo/Pizzaiolo.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaPizzaiolo/PizzaioloProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     }
+    """
 }
 
 MAPS = {
     "Chatelet": {
-        "name": "Chatelet",
+        "name": "Châtelet - Les Halles",
         "fond": charger_image("Map/Chatelet/ChateletMAP.png"),
         "plateformes": [
             {"image": charger_image("Map/Chatelet/ChateletMAPPlat1.png"), "pos": (590, 564)},
