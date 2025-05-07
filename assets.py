@@ -30,6 +30,11 @@ HEROES = {
         "name": "Messi",
         "image": charger_image("Personnage/CharaMessi/Messi.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaMessi/MessiProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    },
+    "CharaAltego": {
+        "name": "Altego",
+        "image" : charger_image("Personnage/CharaAltego/Altego.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaAltego/AltegoProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     }
 }
 
