@@ -1,5 +1,4 @@
 from pygame import *
-from homescreen import *
 
 class Instructions :
     def __init__(self):
@@ -13,6 +12,10 @@ class Instructions :
         self.background = self.background.convert()
         self.screen.blit(self.background, (0, 0))
 
+    def retour(self):
+        from homescreen import HomeScreen
+        return HomeScreen()
+
     def draw_text(self, text, pos, color=(255, 255, 255)):
         surf = self.font.render(text, True, color)
         self.screen.blit(surf, pos)
@@ -22,6 +25,7 @@ class Instructions :
         draw.rect(self.screen, color, rect, border_radius=20)
         self.draw_text(text, (rect.x + 50, rect.y + 10))
         return click and rect.collidepoint(mouse_pos)
+
 
     def run(self):
         while self.running:
@@ -35,11 +39,11 @@ class Instructions :
                     click = True
 
 
-            quit_btn = Rect(400, 430, 200, 60)
+            quit_btn = Rect(790, 3, 200, 60)
 
 
             if self.draw_button("Retour", quit_btn, mouse_pos, click):
-                return HomeScreen()
+                return self.retour()
 
 
             display.flip()

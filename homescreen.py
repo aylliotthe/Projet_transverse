@@ -51,13 +51,13 @@ class HomeScreen:
             quit_btn = Rect(400, 500, 200, 60)
             info_btn = Rect(400, 430, 200, 60)
 
+
             if self.draw_button("    Jouer", play_btn, mouse_pos, click):
                 return HeroSelectionScreen()
             if self.draw_button("    Quitter", quit_btn, mouse_pos, click):
                 return False
             if self.draw_button("Instructions", info_btn, mouse_pos, click):
                 return Instructions()
-
             
             display.flip()
             self.clock.tick(60)
