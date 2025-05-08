@@ -170,6 +170,13 @@ class Player(sprite.Sprite):
             0.5 * self.vecteur_acceleration * (DT ** 2)
         )
 
+        if self.vecteur_position.y > TAILLEY:
+            self.vecteur_position.y = 0
+            self.vecteur_position.x = TAILLEX / 2
+            self.vecteur_vitesse.x = 0
+            self.vecteur_vitesse.y = 0
+            self.degat_fort()
+
     def update(self, grp_plateforme):
         self.move()
         self.collision(grp_plateforme)
