@@ -3,6 +3,7 @@ from Utile import *
 from player import Player
 from plateforme import *
 from assets import *
+from fin import *
 
 class Game:
     def __init__(self,Personnage, Map):
@@ -99,10 +100,10 @@ class Game:
             # Gestion des vies
             if self.joueur1.life <= 0:
                 self.joueur1.kill()
-                return True
+                return Fin2()
             if self.joueur2.life <= 0:
                 self.joueur2.kill()
-                return True
+                return Fin1()
 
             # Collisions projectiles
             for projectile in self.projectiles_joueur1:
