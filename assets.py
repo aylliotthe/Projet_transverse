@@ -36,11 +36,11 @@ HEROES = {
         "image" : charger_image("Personnage/CharaAltego/Altego.png", (tailleImagePersonnage, tailleImagePersonnage)),
         "projo": charger_image("Personnage/CharaAltego/AltegoProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
     },
-#    "CharaPizzaiolo": {
- #       "name": "Pizzaiolo",
-  #      "image" : charger_image("Personnage/CharaPizzaiolo/Pizzaiolo.png", (tailleImagePersonnage, tailleImagePersonnage)),
-  #      "projo": charger_image("Personnage/CharaPizzaiolo/PizzaioloProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
-  #  }
+    "CharaPizzaiolo": {
+        "name": "Pizzaiolo",
+        "image" : charger_image("Personnage/CharaPizzaiolo/Pizzaiolo.png", (tailleImagePersonnage, tailleImagePersonnage)),
+        "projo": charger_image("Personnage/CharaPizzaiolo/PizzaioloProjo.png", (tailleImagePersonnage, tailleImagePersonnage))
+    }
 }
 
 MAPS = {
