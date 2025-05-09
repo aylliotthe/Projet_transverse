@@ -5,6 +5,7 @@ from plateforme import *
 from assets import *
 from fin import *
 
+
 class Game:
     def __init__(self,Personnage, Map):
         init()
@@ -28,6 +29,10 @@ class Game:
 
         map_data = MAPS[Map]
         self.background = transform.scale(map_data["fond"], (TAILLEX, TAILLEY))
+
+        mixer.init()
+        mixer.music.load("Assets/Musiques/Musique_Ingame.mp3")
+        mixer.music.play(loops=-1)
 
         if "plateformes" in map_data:
             for plat in map_data["plateformes"]:
