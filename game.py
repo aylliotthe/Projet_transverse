@@ -34,6 +34,8 @@ class Game:
         mixer.music.load("Assets/Musiques/Musique_Ingame.mp3")
         mixer.music.play(loops=-1)
 
+
+
         if "plateformes" in map_data:
             for plat in map_data["plateformes"]:
                 plateforme = PlateformeImage(plat["image"], plat["pos"])

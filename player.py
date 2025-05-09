@@ -34,6 +34,7 @@ class Player(sprite.Sprite):
         self.groupe_projectiles = groupe_projectiles
         self.life = 8
 
+        self.son_degat = mixer.Sound("Assets/Musiques/Son_Degat.mp3")
 
         if num_joueur == 1:
             self.touches = [K_LEFT,K_RIGHT,K_UP,K_m,K_p]
@@ -105,6 +106,8 @@ class Player(sprite.Sprite):
     def degat_faible(self):
         """Retire une demi-vie si le joueur se prend un projectile faible"""
         self.life -= 1
+        self.son_degat.set_volume(3)
+        self.son_degat.play()
 
 
     def saut(self):
