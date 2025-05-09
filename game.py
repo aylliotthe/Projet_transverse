@@ -100,10 +100,10 @@ class Game:
             # Gestion des vies
             if self.joueur1.life <= 0:
                 self.joueur1.kill()
-                return Fin2()
+                return Fin(2)
             if self.joueur2.life <= 0:
                 self.joueur2.kill()
-                return Fin1()
+                return Fin(1)
 
             # Collisions projectiles
             for projectile in self.projectiles_joueur1:
