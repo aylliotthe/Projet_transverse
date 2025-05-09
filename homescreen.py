@@ -3,13 +3,6 @@ from pygame import *
 from instructions import Instructions
 from playerselection import HeroSelectionScreen
 
-import pygame
-
-# Initialiser Pygame et le module mixer
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.load("Assets/Musiques/music_menu.mp3")
-pygame.mixer.music.play(loops=-1)
 
 
 class HomeScreen:
@@ -23,6 +16,10 @@ class HomeScreen:
         self.background = image.load("Assets/background_home_screen.png")
         self.background = self.background.convert()
         self.screen.blit(self.background, (0,0))
+
+        mixer.init()
+        mixer.music.load("Assets/Musiques/music_menu.mp3")
+        mixer.music.play(loops=-1)
 
     def draw_text(self, text, pos, color=(255, 255, 255)):
         surf = self.font.render(text, True, color)
