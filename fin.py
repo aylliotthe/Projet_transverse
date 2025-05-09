@@ -5,7 +5,7 @@ class Fin:
         init()
         self.screen = display.set_mode((1000, 600))
         display.set_caption("Heroes Battle - Fin")
-        self.font = font.Font("Assets/Jersey10-Regular.ttf", 40)
+        self.font = font.Font("Assets/Jersey10-Regular.ttf", 60)
         self.clock = time.Clock()
         self.running = True
         self.background = transform.scale(image.load("Assets/victory_screen.png"), (1000, 600))
@@ -34,7 +34,7 @@ class Fin:
                 if e.type == MOUSEBUTTONDOWN and e.button == 1:
                     click = True
 
-            self.draw_text(f'Le joueur {self.n_joueur} à gagné.', (330, 250))
+            self.draw_text(f'Le joueur {self.n_joueur} a gagné !', (280, 250))
 
 
             display.flip()
