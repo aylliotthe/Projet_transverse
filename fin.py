@@ -14,6 +14,7 @@ class Fin:
         self.screen.blit(self.background, (0, 0))
         self.n_joueur = n_joueur
 
+
     def retour(self):
         from homescreen import HomeScreen
         return HomeScreen()
