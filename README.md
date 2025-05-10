@@ -30,11 +30,11 @@ Le jeu propose une expérience dynamique :
   - Messi ⚽
   - Altego 🦊 
   - Pizzaiolo 🍕
-  - 
+    
 - **Sélection de la map** avec prévisualisation :
   - Châtelet
   - Nether
-  - 
+    
 - **Système de combat** avec projectiles et points de vie (cœurs)
 ---
 
