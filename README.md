@@ -6,7 +6,7 @@ Ce projet est un  platformer 2D réalisé avec **Pygame**, dans le cadre du *pro
   - **KHELIF Malik**
   - **ALBADORO Nicolas**
   - **BENATMANE Laetitia**
-  - **LE CLANCHE Nicolas** 
+  - **LE CLANCHE Antonin** 
 
 
 ---
@@ -20,7 +20,7 @@ Le jeu propose une expérience dynamique :
 3. Sélection de la carte.
 4. Début de la partie dans un environnement interactif avec plateformes, projectiles et gestion des vies.
 
-**---
+---
 
 ##  Fonctionnalités
 
@@ -30,11 +30,11 @@ Le jeu propose une expérience dynamique :
   - Messi ⚽
   - Altego 🦊 
   - Pizzaiolo 🍕
-  - 
+    
 - **Sélection de la map** avec prévisualisation :
   - Châtelet
   - Nether
-  - 
+    
 - **Système de combat** avec projectiles et points de vie (cœurs)
 ---
 
