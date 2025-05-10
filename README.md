@@ -1,5 +1,5 @@
 ##  Projet Transverse - Heroes Battle
-Ce projet est un jeu 2D réalisé avec **Pygame**, dans le cadre du *projet transverse*. Il propose une **sélection de personnages**, une **sélection de carte**, et un **lancement de partie** avec mécaniques de plateforme et d’affrontement.
+Ce projet est un  platformer 2D réalisé avec **Pygame**, dans le cadre du *projet transverse*. Il propose une **sélection de personnages**, une **sélection de carte**, et un **lancement de partie** avec mécaniques de plateforme et d’affrontement.
 
 ## Contributeurs
   - **MASSON Eliot**
@@ -22,7 +22,7 @@ Le jeu propose une expérience dynamique :
 
 **---
 
-## ✅ Fonctionnalités
+##  Fonctionnalités
 
 - **Écran d’accueil** *(via `homescreen.py`)*
 - **Sélection de héros** avec sprites personnalisés :
@@ -38,7 +38,7 @@ Le jeu propose une expérience dynamique :
 - **Système de combat** avec projectiles et points de vie (cœurs)
 ---
 
-## 🛠️ Spécifications
+##  Spécifications
 
 - **Langage** : Python 3.x  
 - **Librairie** : Pygame  
@@ -46,7 +46,7 @@ Le jeu propose une expérience dynamique :
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ### Prérequis
 
