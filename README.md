@@ -20,7 +20,7 @@ Le jeu propose une expérience dynamique :
 3. Sélection de la carte.
 4. Début de la partie dans un environnement interactif avec plateformes, projectiles et gestion des vies.
 
-**---
+---
 
 ##  Fonctionnalités
 
