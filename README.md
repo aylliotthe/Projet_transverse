@@ -6,7 +6,7 @@ Ce projet est un  platformer 2D réalisé avec **Pygame**, dans le cadre du *pro
   - **KHELIF Malik**
   - **ALBADORO Nicolas**
   - **BENATMANE Laetitia**
-  - **LE CLANCHE Nicolas** 
+  - **LE CLANCHE Antonin** 
 
 
 ---
