@@ -4,7 +4,7 @@ from player import Player
 from plateforme import *
 from assets import *
 from fin import *
-
+from mapselection import *
 
 class Game:
     def __init__(self,Personnage, Map):
@@ -26,6 +26,8 @@ class Game:
         self.all_players = sprite.Group()
         self.grp_1 = sprite.Group()
         self.grp_2 = sprite.Group()
+        self.i1 = HEROES[Personnage[0]]["image"]
+        self.i2 = HEROES[Personnage[1]]["image"]
 
         map_data = MAPS[Map]
         self.background = transform.scale(map_data["fond"], (TAILLEX, TAILLEY))
@@ -107,10 +109,10 @@ class Game:
             # Gestion des vies
             if self.joueur1.life <= 0:
                 self.joueur1.kill()
-                return Fin(2)
+                return Fin(2,self.i2)
             if self.joueur2.life <= 0:
                 self.joueur2.kill()
-                return Fin(1)
+                return Fin(1,self.i1)
 
             # Collisions projectiles
             for projectile in self.projectiles_joueur1:
