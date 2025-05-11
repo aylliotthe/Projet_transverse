@@ -1,5 +1,5 @@
 from pygame import *
-
+from Utile import *
 from instructions import Instructions
 from playerselection import HeroSelectionScreen
 
@@ -15,8 +15,12 @@ class HomeScreen:
         self.running = True
         self.background = image.load("Assets/background_home_screen.png")
         self.background = self.background.convert()
-        self.screen.blit(self.background, (0,0))
+        self.logo = image.load("Assets/logo.png")
 
+        self.logo_rect = self.logo.get_rect(center=(TAILLEX/2+110, TAILLEY/2 - 75))
+        self.logo = transform.scale(self.logo, (self.logo.get_width() // 2, self.logo.get_height() // 2))
+        self.screen.blit(self.background, (0,0))
+        self.screen.blit(self.logo, self.logo_rect)
         mixer.init()
         mixer.music.load("Assets/Musiques/music_menu.mp3")
         mixer.music.play(loops=-1)
@@ -41,8 +45,6 @@ class HomeScreen:
                     self.running = False
                 if e.type == MOUSEBUTTONDOWN and e.button == 1:
                     click = True
-
-            self.draw_text("Bienvenue dans Heroes Battle", (300, 150))
 
             play_btn = Rect(400, 350, 200, 60)
             quit_btn = Rect(400, 500, 200, 60)
