@@ -17,6 +17,7 @@ class MapSelectionScreen:
         self.maps = [
             {"name": "Chatelet", "image": image.load("Assets/Map/Chatelet/ChateletMAP.png")},
             {"name": "Nether", "image": image.load("Assets/Map/Nether/NetherMap.png")},
+            {"name": "Backroom", "image": image.load("Assets/Map/Backroom/BackroomMAP.png")},
         ]
         for map_ in self.maps:
             map_["thumb"] = transform.scale(map_["image"], (180, 130))

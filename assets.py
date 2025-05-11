@@ -62,5 +62,14 @@ MAPS = {
             {"image": charger_image("Map/Nether/NetherMAPPlat4.png"), "pos": (555, 110)},
         ],
 
+    },
+    "Backroom": {
+        "name": "Backroom",
+        "fond": charger_image("Map/Backroom/BackroomMAP.png"),
+        "plateformes": [
+            {"image": charger_image("Map/Backroom/BackroomMAPPlat1.png"), "pos": (320,480)},
+            {"image": charger_image("Map/Backroom/BackroomMAPPlat2.png"), "pos": (1000,570)},
+            {"image": charger_image("Map/Backroom/BackroomMAPPlat3.png"), "pos": (640,260)},
+        ],
     }
 }
