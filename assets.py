@@ -69,7 +69,7 @@ MAPS = {
         "plateformes": [
             {"image": charger_image("Map/Backroom/BackroomMAPPlat1.png"), "pos": (320,480)},
             {"image": charger_image("Map/Backroom/BackroomMAPPlat2.png"), "pos": (1000,570)},
-            {"image": charger_image("Map/Backroom/BackroomMAPPlat3.png"), "pos": (650,250)},
+            {"image": charger_image("Map/Backroom/BackroomMAPPlat3.png"), "pos": (640,260)},
         ],
     }
 }
