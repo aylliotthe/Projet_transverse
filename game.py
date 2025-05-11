@@ -20,6 +20,7 @@ class Game:
         self.running = True
         self.fullscreen = True
 
+        self.font = font.Font("Assets/Jersey10-Regular.ttf", 40)
         self.all_plateforme = sprite.Group()
         self.projectiles_joueur1 = sprite.Group()
         self.projectiles_joueur2 = sprite.Group()
@@ -56,6 +57,10 @@ class Game:
         self.all_players.add(self.joueur1, self.joueur2)
         self.grp_1.add(self.joueur1)
         self.grp_2.add(self.joueur2)
+
+    def draw_text(self, text, pos, color=(255, 255, 255)):
+        surf = self.font.render(text, True, color)
+        self.screen.blit(surf, pos)
 
     def afficher_vie(self, joueur):
         if joueur.num == 2:
@@ -139,6 +144,9 @@ class Game:
 
             self.afficher_vie(self.joueur1)
             self.afficher_vie(self.joueur2)
+
+            self.draw_text("J1", (290, 14))
+            self.draw_text("J2", (1010, 14))
 
             display.flip()
             self.clock.tick(FRAMERATE)
