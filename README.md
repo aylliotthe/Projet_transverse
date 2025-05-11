@@ -25,15 +25,16 @@ Le jeu propose une expérience dynamique :
 ##  Fonctionnalités
 
 - **Écran d’accueil** *(via `homescreen.py`)*
-- **Sélection de héros** avec sprites personnalisés :
-  - Hello Kitty 🐱
-  - Messi ⚽
-  - Altego 🦊 
-  - Pizzaiolo 🍕
+- **Sélection de héros** avec sprites faits sur mesure :
+  - Hello Kitty 
+  - Messi 
+  - Altego 
+  - Pizzaiolo 
     
 - **Sélection de la map** avec prévisualisation :
   - Châtelet
   - Nether
+  - Backrooms
     
 - **Système de combat** avec projectiles et points de vie (cœurs)
 ---
